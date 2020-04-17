@@ -1,0 +1,65 @@
+<div class="row">
+	<div class="col-xs-1"></div>
+	<h3 class="col-xs-11" style="font-weight: bold; margin: 40px 0;">ジャンル追加・一覧画面</h3>
+</div>
+
+<div class="row" style="margin-bottom: 60px;">
+<%= form_for(@genre,url: admin_genres_path ) do |f| %>
+	<div class="col-xs-1"></div>
+	<label class="col-xs-1"><%= "ジャンル" %></label>
+	<div class="col-xs-3">
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
+
+	<%= f.radio_button :is_active,:true %>
+	<%= f.label :is_active, "有効", {value: :true, style: "display: inline-block;"} %>
+  	<%= f.radio_button :is_active, :false %>
+  	<%= f.label :gender, "無効", {value: :false, style: "display: inline-block;"} %>
+
+
+<%= f.submit "追加", class: "btn btn-primary " %>
+<% end %>
+
+</div>
+
+
+<div class="row" style="margin-bottom: 50px;">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-5">
+		<table class="table">
+
+			<tr class="active">
+				<th>ジャンル</th>
+				<th>状態</th>
+				<th></th>
+			</tr>
+
+			<% @genres.each do |genre| %>
+
+			<tr>
+				<td><%= genre.name %></td>
+				<td>
+					<%= if [true].include?(genre.is_active)
+						 status = "有効"
+					    else
+						 status = "無効"
+					    end %>
+				</td>
+				<td>
+					<button type="button" class="btn btn-primary">
+						<%= link_to '編集する', edit_admin_genre_path(genre.id), :style=>"color:white;" %>
+					</button>
+				</td>
+			</tr>
+
+			<% end %>
+		</table>
+	</div>
+</div>
+
+
+
+
+
+
+

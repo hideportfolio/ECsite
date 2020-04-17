@@ -1,0 +1,70 @@
+
+
+
+<h3 style="margin: 30px 120px;">マイページ</h3>
+
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-1" style="text-align: center; line-height: 30px;"><h4 style="font-weight: bold;">登録情報</h4></div>
+	<button type="button" class="btn btn-primary col-xs-1">
+		<%= link_to '編集する', edit_end_user_path ,:style=>"color:white;" %>
+	</button>
+	<button type="button" class="btn btn-primary col-xs-2" style="margin-left: 10px;">
+		<%= link_to 'パスワードを変更する', edit_end_user_password_path ,:style=>"color:white;"%>
+	</button>
+
+</div>
+
+<div class="row" style="margin-top: 20px;">
+	<div class="col-xs-1"></div>
+
+	<div class="col-xs-5">
+	<table class="table table-bordered">
+
+		<tr>
+			<th class="active">氏名</th>
+			<th>
+				<%= @end_user.surname %>
+				<%= @end_user.name %>
+			</th>
+		<tr>
+			<th class="active">カナ</th>
+			<td>
+				<%= @end_user.surname_kana %>
+				<%= @end_user.name_kana %>
+			</td>
+		</tr>
+
+		<tr>
+			<th class="active">郵便番号</th>
+			<td><%= @end_user.postal_code %></td>
+		</tr>
+		<tr>
+			<th class="active">住所</th>
+			<td><%= @end_user.address %></td>
+		</tr>
+		<tr>
+			<th class="active">電話番号</th>
+			<td><%= @end_user.phone_number %></td>
+		</tr>
+
+	</table>
+	</div>
+</div>
+<div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-1" style="text-align: center; line-height: 30px;"><h4 style="font-weight: bold;">配送先</h4></div>
+	<button type="button" class="btn btn-primary col-xs-1">
+		<%= link_to '一覧を見る', edit_end_user_path ,:style=>"color:white;" %>
+	</button>
+</div>
+<div class="row" style="margin-bottom: 50px;">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-1" style="text-align: center; line-height: 30px;"><h4 style="font-weight: bold;">注文履歴</h4></div>
+	<button type="button" class="btn btn-primary col-xs-1">
+		<%= link_to '一覧を見る', edit_end_user_path ,:style=>"color:white;" %>
+	</button>
+</div>
+
+
+

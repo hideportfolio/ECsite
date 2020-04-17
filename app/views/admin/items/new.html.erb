@@ -1,0 +1,86 @@
+
+<div class="row" style="margin-left: 50px;">
+		<h3 style="font-weight: bold;">商品 新規登録画面</h3>
+</div>
+		<%= render 'layouts/erros', erro: @item %>
+
+<div class="form-group">
+<%= form_for(@item,url: admin_items_path ) do |f| %>
+	<div class="row" style="padding-top: 70px;">
+		<div class="col-xs-1" ></div>
+
+
+		<div class="field col-xs-3">
+			<%= attachment_image_tag @item, :image, fallback: "no_image.jpg",size: '200x120', id: :img_prev %>
+			<%= f.attachment_field :image,id: :item_img %>
+
+			<script type="text/javascript">
+			  $(function() {
+			    function readURL(input) {
+			        if (input.files && input.files[0]) {
+			        var reader = new FileReader();
+			        reader.onload = function (e) {
+			    $('#img_prev').attr('src', e.target.result);
+			        }
+			        reader.readAsDataURL(input.files[0]);
+			        }
+			    }
+			    $("#item_img").change(function(){
+			        readURL(this);
+			    });
+			  });
+			</script>
+
+	    </div>
+
+
+	    <div class="col-xs-1">
+	    	<label style="margin-bottom: 20px;">商品名</label>
+	    	<label style="margin-bottom: 20px;">商品説明</label>
+	    </div>
+	    <div class="col-xs-3"  style="margin-bottom: 20px;">
+			<div class="field" style="padding-bottom: 20px; margin-bottom: 20px;">
+				<%= f.text_field :name, class: "col-xs-12 form-control" %>
+			</div>
+			<div class="field">
+				<%= f.text_area :introduction, :class => "col-xs-12 form-control" ,:style => "resize: none;"%>
+			</div>
+		</div>
+	</div>
+
+	<dir class="row" style="margin-bottom: 20px;">
+		<div class="col-xs-4"></div>
+		<label class="col-xs-1">ジャンル</label>
+		<div class="col-xs-3">
+			<%= f.collection_select :genre_id, Genre.where(is_active: 'true'), :id, :name,{}, {class: 'form-control'} %>
+		</div>
+	</dir>
+
+	<div class="row" style="margin-bottom: 20px;">
+		<dir class="col-xs-4"></dir>
+		<label class="col-xs-1"><%= "税抜価格" %></label>
+		<div class="col-xs-3">
+			<%= f.text_field :price_before_tax, class: "form-control" %>
+		</div>
+		<div class="col-xs-1" style="text-align: left; padding: 0;">円</div>
+	</div>
+	<div class="col-xs-4"></div>
+	<div class="col-xs-1">
+		<label>販売<br>ステータス</label>
+	</div>
+	<div class="col-xs-3">
+		<%= f.select :is_sale, [['有効', true], ['無効', false]] , {}, {class: 'col-xs-12 form-control'} %>
+	</div>
+</dir>
+
+
+<div class="actions row" style="padding-bottom: 100px;">
+	<div class="col-xs-9"></div>
+	<div class="col-xs-2">
+		<%= f.submit "新規登録", class: "btn btn-primary col-xs-12" %>
+	</div>
+</div>
+<% end %>
+</div>
+
+

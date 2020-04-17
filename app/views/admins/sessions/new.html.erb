@@ -1,0 +1,28 @@
+
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+
+<div class="row" style="margin-top: 150px;">
+  <div class="col-xs-4"></div>
+  <div class="col-xs-8">
+    <h4>メールアドレス
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %></h4>
+  </div>
+</div>
+
+<div class="row" >
+  <div class="col-xs-4"></div>
+  <div class="col-xs-8" style="padding-left: 50px;">
+    <h4>パスワード
+    <%= f.password_field :password, autocomplete: "current-password" %></h4>
+  </div>
+</div>
+
+
+
+  <div class="row" style="text-align: center; margin: 50px 0 200px; ">
+    <%= f.submit "ログイン" %>
+  </div>
+<% end %>
+

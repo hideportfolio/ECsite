@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-xs-1"></div>
+	<h3 class="col-xs-11" style="font-weight: bold; margin: 40px 0;">ジャンル編集画面</h3>
+</div>
+
+<div class="row" style="margin-bottom: 400px;">
+<%= form_for(@genre,url: admin_genre_path(@genre.id) ) do |f| %>
+	<div class="col-xs-1"></div>
+	<label class="col-xs-1"><%= "ジャンル" %></label>
+	<div class="col-xs-3">
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
+
+	<%= f.radio_button :is_active,:true %>
+	<%= f.label :is_active, "有効", {value: :true, style: "display: inline-block;"} %>
+  	<%= f.radio_button :is_active, :false %>
+  	<%= f.label :gender, "無効", {value: :false, style: "display: inline-block;"} %>
+
+
+<%= f.submit "変更を保存する", class: "btn btn-primary " %>
+<% end %>
+
+</div>
+

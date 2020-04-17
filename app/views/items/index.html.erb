@@ -1,0 +1,32 @@
+
+<div class="row">
+
+	<div class="col-xs-2">
+		<%= render 'items/genre', genres: @genres %>
+	</div>
+
+
+
+	<div class="col-xs-8">
+		<div><h3 style="font-weight: bold;">商品一覧</h3></div>
+		<dir class="item-boxes">
+			<% @items.each do |item| %>
+			<div class="item-box">
+				<%= attachment_image_tag item, :image,fallback: "no_image.jpg", size:'200x120'%>
+				<div class="contain">
+					商品名&emsp;&emsp;&emsp; <%= item.name %>
+				</div>
+				<div class="contain">
+					¥<%= (item.price_before_tax * 1.1 ).floor.to_s(:delimited) %>
+				</div>
+			</div>
+			<% end %>
+
+		</dir>
+		<div style="text-align: center; width: 880px; margin-bottom: 50px;"><%= paginate @items, class: "paginate" %></div>
+	</div>
+</div>
+
+
+
+

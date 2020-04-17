@@ -1,0 +1,41 @@
+
+
+<h3 style="margin: 30px 30px; font-weight: bold;">会員一覧画面</h3>
+
+
+<div class="row" style="margin-top: 20px;">
+	<div class="col-xs-2"></div>
+
+	<div class="col-xs-8">
+	<table class="table">
+
+		<tr class="active">
+			<th>会員ID</th>
+			<th>氏名</th>
+			<th>メールアドレス</th>
+			<th>ステータス</th>
+		</tr>
+		<% @end_users.each do |end_user| %>
+
+		<tr>
+			<td><%= end_user.id %></td>
+			<td><%= link_to admin_end_user_path(end_user.id) do%>
+				<%= end_user.surname %>
+				<%= end_user.name %>
+				<% end %>
+			</td>
+			<td><%= end_user.email %></td>
+			<td><%= if end_user.deleted_at.nil?
+					 status = "有効"
+				    else
+					 status = "退会済み"
+				    end %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+	<%= paginate @end_users, class: "paginate" %>
+	</div>
+</div>
+
+

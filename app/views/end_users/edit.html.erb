@@ -1,0 +1,74 @@
+
+<%= form_for(@end_user) do |f| %>
+
+<!-- エラーメッセージ表示-->
+	<% if @end_user.errors.any?  %>
+		  <div>
+		    <h2 ><%= @end_user.errors.count %>errors prohibited this obj from being saved:</h2>
+
+	    <ul>
+		    <% @end_user.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+		    </ul>
+		  </div>
+	<% end %>
+
+<div class="row" style="margin-top: 70px;">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-2" style="line-height: 30px;"><h4>登録情報編集</h4></div>
+	<button type="button" class="btn btn-danger col-xs-1">
+		<%= link_to '退会する', end_user_registration_path ,method: :delete,"data-confirm" => "退会してもよろしいですか？",:style=>"color:white;" %>
+	</button>
+</div>
+
+<div class="row" style="margin-top: 10px;">
+	<div class="col-xs-1"></div>
+
+	<div class="col-xs-5">
+	<table class="table table-bordered">
+
+		<tr>
+			<th class="active">氏名</th>
+			<th style="font-weight: normal;">
+				<%= f.text_field :surname %>
+				<%= f.text_field :name %>
+			</th>
+		<tr>
+			<th class="active">カナ</th>
+			<td>
+				<%= f.text_field :surname_kana %>
+				<%= f.text_field :name_kana %>
+			</td>
+		</tr>
+
+		<tr>
+			<th class="active">郵便番号</th>
+			<td><%= f.text_field :postal_code %></td>
+		</tr>
+		<tr>
+			<th class="active">住所</th>
+			<td><%= f.text_field :address %></td>
+		</tr>
+		<tr>
+			<th class="active">電話番号</th>
+			<td><%= f.text_field :phone_number %></td>
+		</tr>
+
+	</table>
+	</div>
+</div>
+<div class="row" style="margin-top: 10px; margin-bottom: 100px;">
+	<div class="col-xs-2"></div>
+	<div class="col-xs-1">
+			<%= f.submit '編集内容を保存する'%>
+	</div>
+</div>
+
+
+
+<% end %>
+
+
+
+

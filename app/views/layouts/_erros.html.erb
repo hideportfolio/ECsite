@@ -1,0 +1,12 @@
+<!-- エラー表記 -->
+	<% if erro.errors.any?  %>
+		  <div>
+		    <h2 ><%= erro.errors.count %>errors prohibited this obj from being saved:</h2>
+		    <ul>
+		    <% erro.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+		    </ul>
+		  </div>
+	<% end %>
+

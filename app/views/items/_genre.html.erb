@@ -1,0 +1,15 @@
+<div class="row" style="height: 50px;"></div>
+
+
+<div class="genre-sidebar">
+	<div class="row  genre-bar"　>
+		ジャンル検索
+	</div>
+
+	<div>
+		<% genres.each do |genre| %>
+		<div class="row genre"><%= genre.name %></div>
+		<% end %>
+	</div>
+
+</div>
